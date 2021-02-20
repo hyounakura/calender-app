@@ -2,10 +2,10 @@ import React from "react";
 import dayjs from "dayjs";
 import * as styles from "./style.css";
 import { isSameMonth, isFirstDay, isSameDay, getMonth } from "../../services/calendar";
-
+import Schedule from "../Schedule";
 import { Typography } from "@material-ui/core";
 
-const CalendarElement = ({ day, month }) => {
+const CalendarElement = ({ day, month, schedules }) => {
   const format = isFirstDay(day) ? "M月D日" : "D";
   const today = dayjs();
   const isToday = isSameDay(day, today);
@@ -26,6 +26,11 @@ const CalendarElement = ({ day, month }) => {
           {day.format(format)}
         </span>
       </Typography>
+      <div className={styles.schedules}>
+        {schedules.map(e => (
+          <Schedule key={e.id} schedule={e} />
+        ))}
+      </div>
     </div>
   );
 };
