@@ -34,6 +34,7 @@ const AddScheduleDialog = ({
   setIsEditStart
 }) => {
   const isTitleInvalid = !title && isStartEdit;
+  const isDisableButton = !title;
 
   return (
     <Dialog open={isDialogOpen} onClose={closeDialog} maxWidth="xs" fullWidth>
@@ -93,7 +94,7 @@ const AddScheduleDialog = ({
         </Grid>
       </DialogContent>
       <DialogActions>
-        <Button color="primary" variant="outlined" onClick={saveSchedule}>
+        <Button color="primary" variant="outlined" onClick={saveSchedule} disabled={isDisableButton}>
           保存
         </Button>
       </DialogActions>
